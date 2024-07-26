@@ -1,0 +1,9 @@
+this in javascript: https://www.codementor.io/@dariogarciamoya/understanding--this--in-javascript-du1084lyn
+this in arrow: https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc
+hoisting: https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+shallow vs deep copy
+slice vs splice vs substring
+expots vs module.exports: https://www.scaler.com/topics/nodejs/module-exports-vs-exports/
+setTimeout() and Promise Example: https://www.encora.com/insights/javascript-settimeout-and-promise-under-the-hood
+parallel vs concurrency: https://medium.com/@itIsMadhavan/concurrency-vs-parallelism-a-brief-review-b337c8dac350
+parallel(multithreading) code in Nodejs: https://www.linkedin.com/pulse/parallelize-tasks-nodejs-fozle-rabbi-shafi

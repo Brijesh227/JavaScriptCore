@@ -1,0 +1,20 @@
+Everything in javascript happens inside an "Execution Context".
+
+Javascript is synchronous single-threaded language.
+
+how below code executed?
+var n = 2;
+function square(num){      //num = parameter
+    var ans = num * num;
+    return ans;
+}
+var square4 = square(4);  // 4 = arguments
+
+1. memory phase:
+    n: undefined
+    square: {...} // whole code
+    square4: undefined
+
+2. code Execution:
+    when new function is called it create it's own execution context.
+
