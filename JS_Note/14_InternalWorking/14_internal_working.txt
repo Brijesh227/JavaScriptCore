@@ -1,0 +1,72 @@
+How node works: https://www.youtube.com/watch?v=ooBxSg1Cl1w
+How browsers works: https://www.youtube.com/watch?v=5rLFYtXHo9s
+How JavaScript works: https://www.youtube.com/watch?v=UXWBl77dq3A
+
+Browser working:
+
+    DOM generation:
+        load file
+            |
+        raw bytes
+            |
+        character encoding(UTF-8) -> token -> h1,p,html
+            |
+        Relation
+            |
+          Nodes
+            |
+           DOM
+
+    CSSOM generation:
+        Raw -> character encoding(UTF-8) -> token -> object -> Relation -> model(CSSOM)
+        
+    Render Tree:
+        DOM + CSSOM -> Render Tree
+
+Relations between v8,libuv and event loop
+JavaScript Code (run by V8) 
+       |
+Asynchronous Operation (e.g., I/O)
+       |
+       v
+libuv (handles I/O, uses internal thread pool)
+       |
+Event Loop (part of libuv, manages execution of callbacks)
+       |
+JavaScript Callbacks (executed by V8)
+
+
+How Javascript works:
+    1. call stack.         3. Web API  => it provide briedge between browser and js engine. 
+                                          it delegate all works to browser(which has all code for netwrok fetch,timer,file,camera,microphone,storage)
+     _  _  _  _  _ _      _  _  _  _  _  _  _  _          
+    |               |   |console                |
+    |     one       |   |fetch                  |   
+    |     task      |   |TimerAPI -             | setTimeout,setInterval
+    |   at a time   |   |WebStorage -           | localstorage,sessionStorage
+    |               |   |File API -             | Blob, File, FileList
+    |               |   |Performace API-        | Performace,PerformaceMeasure
+    |               |   |HTML DOM               | HTML element
+    |               |   |URL                    | URL
+    |_  _  _  _  _ _|   |_  _  _  _  _  _ _  _  |
+    
+    2. Eventloop                        5. Task Queue(callback based API)
+     _  _  _  _  _ _         _  _  _  _  _  _ _  _  _  _  _  _ _  _  _  _  _  _         
+    |               |       |    Geolocation API                               |
+    |   continous   |       |    Timer API                                     |
+    |    running    |       |                                                  |
+    |   check for   |       |_  _  _  _  _  _ _  _  _  _  _  _ _  _  _  _  _  _|    
+    |  call stack   |                   4. Microtask Queue(promise based api,async function)
+    |      to       |        _  _  _  _  _  _ _  _  _  _  _  _ _  _  _  _  _  _         
+    |    Empty      |       |                                                  |
+    |               |       |                                                  |
+    |_  _  _  _  _ _|       |                                                  |
+                            |_  _  _  _  _  _ _  _  _  _  _  _ _  _  _  _  _  _|           
+    
+    microtask queue >>> task queue (always execure task in microtask queue first, then task queue)
+    
+    what include in microtask Queue
+        -> then callback
+        -> catch callback
+        -> finally callback
+        -> body after await
