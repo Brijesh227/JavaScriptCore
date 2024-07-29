@@ -1,4 +1,5 @@
 // https://www.youtube.com/watch?v=pN-Qmv4zBcI&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=42
+// class: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 
 /*
 OOPs in js contains:
@@ -37,7 +38,7 @@ const user = {
 
 
 function User(username, loginCount, isLoggedIn){
-    // const this = {};             internallu does this when new is called
+    // const this = {};             internally done by js engine when new is called
     this.username = username;
     this.loginCount = loginCount;
     this.isLoggedIn = isLoggedIn
@@ -47,10 +48,11 @@ function User(username, loginCount, isLoggedIn){
 
     }
 
-    // return this;                  internally does this when new is called
+    // return this;                  internally done by js engine when new is called
 }
 
 const userOne = new User("hitesh", 12, true)
 const userTwo = new User("ChaiAurCode", 11, false)
 console.log(userOne.constructor);       // [Function: User]
 //console.log(userTwo);
+

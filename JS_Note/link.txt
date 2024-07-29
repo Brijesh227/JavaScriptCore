@@ -7,3 +7,4 @@ expots vs module.exports: https://www.scaler.com/topics/nodejs/module-exports-vs
 setTimeout() and Promise Example: https://www.encora.com/insights/javascript-settimeout-and-promise-under-the-hood
 parallel vs concurrency: https://medium.com/@itIsMadhavan/concurrency-vs-parallelism-a-brief-review-b337c8dac350
 parallel(multithreading) code in Nodejs: https://www.linkedin.com/pulse/parallelize-tasks-nodejs-fozle-rabbi-shafi
+OOPs: https://shawnr.gitbooks.io/practical-introduction-to-javascript/content/object-oriented-javascript/

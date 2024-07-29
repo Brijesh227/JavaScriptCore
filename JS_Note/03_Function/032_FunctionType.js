@@ -138,9 +138,9 @@ console.log(Person.prototype === me.__proto_);  // true
     What "new" keyword does internally when new Person("hi"):
         1.A new object is created: {}.
         2.The prototype of this new object is set to Person.prototype.
-        3.The Person function is called with this referring to the new object and name set to "hi". Inside Person, this.name = name assigns "hi" to the name property of the new object.
+        3.The Person function is called with "this" referring to the new object and name set to "hi". Inside Person, this.name = name assigns "hi" to the name property of the new object.
         4.The new object { name: "hi", talk: function, talkWithThis: function } is returned.
-        5.So, the new keyword ensures that the this keyword within the constructor function refers to the new object being created, allowing you to initialize properties on that new object.
+        5.So, the new keyword ensures that the "this" keyword within the constructor function refers to the new object being created, allowing you to initialize properties on that new object.
 */
 
 
