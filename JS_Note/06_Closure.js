@@ -45,7 +45,7 @@ function x(){
 x();
 
 /* source tab of browser:
-    Closur (x):
+    Closure (x):
         a: 7
     
     Global:

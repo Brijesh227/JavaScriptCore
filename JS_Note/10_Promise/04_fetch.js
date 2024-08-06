@@ -1,3 +1,4 @@
+// fetch using promise
 const cartItem = () => {
     return fetch('https://dummyjson.com/carts')
             .then(res => res.json())

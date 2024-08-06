@@ -1,28 +1,28 @@
-// const readFileAsArray = function(file, cb = () => {}) {
-//     return new Promise(async (resolve, reject) => {  //try without return
-//       if(typeof file === "string") {
-//           reject(new Error("generated error"));
-//           return cb(err);
-//       }
-//       const lines = file;
-//       await cb(null, lines);
-//       setTimeout(() => {
-//           console.log("in promise")
-//           resolve(lines);
-//       },5000)
-//     });
-//   };
+const readFileAsArray = function(file, cb = () => {}) {
+    return new Promise(async (resolve, reject) => {        //try without return
+      if(typeof file === "string") {
+          reject(new Error("generated error"));
+          return cb(err);
+      }
+      const lines = file;
+      await cb(null, lines);
+      setTimeout(() => {
+          console.log("in promise")
+          resolve(lines);
+      },5000)
+    });
+  };
   
-//   (async function (){
-//       const hello = readFileAsArray(123,callb);
-//       console.log("helo",hello);
-//   })();
-// .then((data)=>{
-//     console.log("promise",data);
-// })
-// .catch((err) => {
-//     console.log("promise err",err);
-// })
+  (async function (){
+      const hello = readFileAsArray(123,callb);
+      console.log("helo",hello);
+  })()
+.then((data)=>{
+    console.log("promise",data);
+})
+.catch((err) => {
+    console.log("promise err",err);
+})
 
 
 
@@ -118,20 +118,20 @@
 
 
 
-setTimeout(() => {
-  console.log("setTimeout");
-},0)
+// setTimeout(() => {
+//   console.log("setTimeout");
+// },0)
 
-process.nextTick(() => {
-  console.log("next tick");
-})
+// process.nextTick(() => {
+//   console.log("next tick");
+// })
 
-Promise.resolve("1").then((data) => {
-  console.log("promise",data);
-})
+// Promise.resolve("1").then((data) => {
+//   console.log("promise",data);
+// })
 
-setImmediate(() => {
-  console.log("setImmediate");
-})
+// setImmediate(() => {
+//   console.log("setImmediate");
+// })
 
-console.log("normal")
+// console.log("normal")

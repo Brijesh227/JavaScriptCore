@@ -63,4 +63,25 @@ function constructObject(obj) {
     console.log("obj",resObj);
 }
 
-constructObject(obj)
+constructObject(obj);
+
+// Flatten the Array.
+
+const arr = [[[1],1,2],[2,3],3];
+const inbuildFlat = arr.flat();
+console.log(inbuildFlat);       // [[1],1,2,2,3,3]
+
+// second way - Recursion
+const res= [];
+function flatArr(arr){
+    for (let i=0;i<arr.length;++i){
+        if(!Array.isArray(arr[i])){
+            res.push(arr[i]);
+        } else {
+            flatArr(arr[i]);
+        }
+    }
+    return res;
+}
+
+console.log('flaten Arr',flatArr(arr));    //[1,1,2,2,3,3]

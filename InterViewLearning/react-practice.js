@@ -1,4 +1,4 @@
-// Ravi Gohil14:53
+// Ravi Gohil
 // import { useState } from 'react';
 
 // export default function Counter() {
@@ -21,7 +21,8 @@
 // 2: Alert with 15, 25
 // 3: Alert with 5, 10
 // 4: Error: Cannot update the same state multiple
-// Ravi Gohil14:55
+
+
 // import { useRef } from 'react';
 
 // export default function Counter() {
@@ -43,7 +44,8 @@
 // 2: Count: 1
 // 3: null
 // 4: Count: 0
-// Ravi Gohil14:57
+
+
 import { useRef } from 'react';
 
 function MyCustomInput(props) {
