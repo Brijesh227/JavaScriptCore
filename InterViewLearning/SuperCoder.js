@@ -28,7 +28,9 @@ user.pet.name = "hello";
 console.log(user.name);         // john doe
 console.log(user.pet.name);     // hello
 
-// which is used to create object from prototype : Object.create() vs Object.prototype
+/* which is used to create object from prototype : 
+    Object.create() vs Object.prototype vs Object.defineProperty(
+*/
 
 const arr1 = ['a','b','c'];
 const arr2 = ['b','c','a'];
