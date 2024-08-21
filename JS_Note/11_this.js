@@ -97,7 +97,7 @@ function helloji(){
         console.log(hi2);           // hi
         console.log(hello2);        // hello
         console.log(this);          // {obj}(Node)    Window(browser) without hello2
-        console.log(this.hello2);   // undefined
+        console.log(this.hello2);   // undefined  Variables declared with var are function-scoped, so hello2 is not visible to ji as it's scoped to helloji.
         console.log(this.hi2);      // hi
     }
     ji();
@@ -124,7 +124,7 @@ function Person(name) {
         console.log("talking", this);   // Person { name: "ji", talk: f, talkWithThis : f, __proto__: Object }
     };
     this.talkWithThis = function() {
-        console.log("talking this", this.name); 
+        console.log("talking this", this.name);     // talking this ji
     };
     setTimeout(function() {
         // here this refer to window
@@ -136,7 +136,8 @@ function Person(name) {
     },2000);
 }
 const pme = new Person("ji");
-console.log(pme.talk()); 
+console.log(pme.talk());
+console.log(pme.talkWithThis()); 
 
 // ----- callback example -----
 function outer(callback) {

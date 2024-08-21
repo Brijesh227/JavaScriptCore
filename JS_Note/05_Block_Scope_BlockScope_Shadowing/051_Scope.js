@@ -24,8 +24,8 @@ function a(){
 a();
 
 function a(){
-    var b = 10;         
-    console.log(b);             //10
+    var b = 10;                 // var in function treated as function scope
+    console.log(b);             // 10
 }
 a();
 console.log(b);                 // ReferenceError: b is not defined

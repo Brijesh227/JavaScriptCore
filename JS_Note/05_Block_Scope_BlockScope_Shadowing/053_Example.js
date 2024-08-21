@@ -177,10 +177,51 @@ const add2 = () => {
 }
 obj.add = add;
 obj.add2 = add2;
-console.log("add",add());
-console.log("add2",add2());
-console.log("obj add",obj.add());
-console.log("obj2 add2",obj.add2());
+console.log("add",add());               // 10 20
+                                        // 10 20
+                                        // add 30
+
+console.log("add2",add2());             // 10 20
+                                        // 10 20
+                                        // add2 30
+
+console.log("obj add",obj.add());       // -10 -20
+                                        // 10 20
+                                        // obj add 10
+
+console.log("obj2 add2",obj.add2());    // 10 20
+                                        // 10 20
+                                        // obj2 add2 30
+
+let a=10;
+let b=20;
+const obj = {
+    a: -10,
+    b: -20,
+}
+function addlet() {
+    console.log(this.a,this.b);
+    console.log(a,b);
+    return this.a + b;
+}
+const add2let = () => {
+    console.log(this.a,this.b);
+    console.log(a,b);
+    return this.a + b;
+}
+obj.add = addlet;
+obj.add2 = add2let;
+console.log("add",addlet());               // 10 20
+                                        // 10 20
+                                        // add 30
+                                        
+console.log("add2",add2let());             // 10 20
+                                        // 10 20
+                                        // add2 30
+
+console.log("obj add",obj.addlet());
+console.log("obj2 add2",obj.add2let());
+
 
 // var a = 10;
 // var b = 20;
