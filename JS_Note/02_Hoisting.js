@@ -23,7 +23,7 @@ let arrGetName2 = () => {
     console.log("hello from arrow getname",x);
 }
 
-arrGetNameFunExpression();      // hello from arrow getname 7
+arrGetNameFunExpression();      // hello from arrow function expression getname 7
 arrGetName();                   // hello from arrow getname 7
 arrGetName2();                  // hello from arrow getname 7
 console.log(x);                 // 7

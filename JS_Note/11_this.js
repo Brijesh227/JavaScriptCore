@@ -1,4 +1,4 @@
-/*
+/*  please must see example on line 109 onwards
     https://www.youtube.com/watch?v=fVXp7ZWjlO4&list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&index=6
 
     You can use 'this' inside Object to refer current context.
@@ -105,6 +105,65 @@ function helloji(){
 helloji();
 
 // ----- color code Example -----
+
+function hello() {
+    let username = "hello";
+    let arr = () => {
+        console.log(this);                  // window
+        console.log(this.username);         // undefined
+    }
+    console.log(username);                  // hello
+    console.log(this.username);             // undefined
+    arr();
+}
+hello();
+
+/**
+ * Understanding this
+    hello Function Execution Context:
+        When hello is called, it creates its own execution context.
+        Inside this context, username is defined, and this refers to the this value of hello. Since hello is called as a global function, this in non-strict mode refers to the global object (window in a browser, global in Node.js). 
+        In strict mode, this would be undefined.
+
+    Arrow Function arr:
+
+        Arrow functions do not have their own this. Instead, they capture this from the lexical scope where they are defined. In this case, the lexical scope is the hello function's execution context.
+        So arr is using the this from hello, which, as mentioned, is the global object in non-strict mode.
+ */
+
+
+function hello() {
+    let username = "hello";
+    let arr = function() {
+        console.log(this);              // window
+        console.log(this.username);  
+    }
+    arr();
+}
+hello();
+
+/**
+ * Here’s what happens with a regular function:
+
+    arr() is called with this set to the hello function’s execution context. 
+    Since hello is invoked globally, this will still refer to the global object, but if you were to call hello as a method of an object, 
+    this inside arr would refer to that object.
+
+ */
+
+function hello() {
+    let username = "hello";
+    let arr = function() {
+        console.log(this);              // window
+        console.log(this.username);     // undefined 
+    }.bind(this);
+    arr();
+}
+hello();
+
+// hello function still refers to the global context due to how the function is invoked.
+
+// ------------------
 
 function talk() {
     return this;
