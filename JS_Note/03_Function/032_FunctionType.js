@@ -129,7 +129,8 @@ console.log(Person.prototype);          /* {
 console.log(Person.prototype.name);     // undefined 
 console.log(Person.prototype.talk());   // TypeError: Person.prototype.talk is not a function
 console.log(pme.prototype)              // undefined
-console.log(Person.prototype === me.__proto_);  // true
+console.log(Person.prototype === pme.__proto_);  // false
+console.log(Person.__proto_ === pme.prototype);  // true
 
 /*  
     where this refer in factory fucntion:
@@ -194,7 +195,7 @@ console.log(addTwo(3, 4));
             this.n = n;
         }
         const me = new Person("ji")
-        Person.prototy.talk = () => {
+        Person.prototype.talk = () => {
             console.log(this);        // Window
         }
     
