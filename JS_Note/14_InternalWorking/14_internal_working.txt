@@ -37,7 +37,7 @@ JavaScript Callbacks (executed by V8)
 
 
 How Javascript works:
-    1. call stack.         3. Web API  => it provide briedge between browser and js engine. 
+    1. call stack.         3. Web API  => it provide bridge between browser and js engine. 
                                           it delegate all works to browser(which has all code for netwrok fetch,timer,file,camera,microphone,storage)
      _  _  _  _  _ _      _  _  _  _  _  _  _  _          
     |               |   |console                |

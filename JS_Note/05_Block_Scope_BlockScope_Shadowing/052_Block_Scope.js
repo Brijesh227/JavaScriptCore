@@ -63,7 +63,7 @@ console.log(c,this.c);      // 100 undefined    'c' is refer to script block
         c: 100
     
     Global:
-        a: 100, after soemtime a = 10 
+        a: 100, after sometime a = 10 
 */
 
 // For function and block scope shadowing working is same

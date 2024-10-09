@@ -3,7 +3,7 @@
     Note: line 66
     1. you can pass function as parameter to other function,
      eg.,
-        funcion x(y){
+        function x(y){
             var a = 7;
             y();
         }
@@ -13,18 +13,18 @@
     
     2. you can return function from other function,
      eg.,
-        funcion x(){
+        function x(){
             var a = 7;
             return function y(){
                 console.log("hello from y",a)
             }
         }
         var z = x();
-        z();                 // 7
+        z();   or    x()()              // 7
 */
 
 /*
-Uses of Closures:
+Usage of Closures:
     1. Module Design Pattern
     2. Currying
     3. Functions like once
