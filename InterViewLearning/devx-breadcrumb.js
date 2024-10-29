@@ -33,3 +33,7 @@ const categories = [
  }
 
  breadcrumbs();
+
+ next -> ssr vs ssg
+
+ (28)^2
