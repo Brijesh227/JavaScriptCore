@@ -86,6 +86,7 @@ function hi() {
   let a = 1;
   var b = 9;
 }
+console.log(b);         // ReferenceError: b is not defined
   
 /* source tab of browser:
     Local:

@@ -13,58 +13,58 @@ const data = cartItem()
 
 console.log('data',data);                           
 
-/*  data Promise { <pending> }
-    data then { ... }            
+/*  data: Promise { <pending> }
+    data then: { ... }  // actual result          
 */
 
-// const fetchData = () => {
-//     return fetch('https://dummyjson.com/carts/1')
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok.');
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             return data;
-//         })
-//         .catch(error => {
-//             console.error('Error fetching data:', error);
-//             throw error; // Optionally handle or rethrow the error
-//         });
-// };
+const fetchData = () => {
+    return fetch('https://dummyjson.com/carts/1')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            throw error; // Optionally handle or rethrow the error
+        });
+};
 
-// const processData = () => {
-//     fetchData()
-//         .then(fetchedData => {
-//             return fetchedData;
-//         })
-//         .catch(error => {
-//             console.error('Error processing data:', error);
-//         });
-// };
+const processData = () => {
+    fetchData()
+        .then(fetchedData => {
+            return fetchedData;
+        })
+        .catch(error => {
+            console.error('Error processing data:', error);
+        });
+};
 
-// data = processData();
-// console.log('data',data);
+data = processData();
+console.log('data',data);
 
 
 
-// async function fetchdata(){
-//     try {
-//         const response = await fetch('https://dummyjson.com/carts/1');
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok.');
-//         }
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('There has been a problem with your fetch operation:');
-//     }
-// }
+async function fetchdata(){
+    try {
+        const response = await fetch('https://dummyjson.com/carts/1');
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:');
+    }
+}
 
-// async function start(){
-//     const data = await fetchdata();
-//     console.log('data',data);
-// }
+async function start(){
+    const data = await fetchdata();
+    console.log('data',data);
+}
 
-// start()
+start()

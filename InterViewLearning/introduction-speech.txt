@@ -1,0 +1,50 @@
+Hello, My self Brijesh Satasiya, and i'm currently working as a 
+Senior Full Stack Developer at Keytoz Pvt. Ltd.,
+I have completed my Bachelor of Engineering from Gujarat 
+technological university 
+with Computer engineering degree.
+
+I'm currently working on scalable, pub/sub-based, microservice architecture 
+style project to handle calls, sms and emails 
+using Nodejs, GraphQL, Typescript, Postgresql, Redis, BullMQ and AWS.
+
+i have developed AI search functionality to search across multiple 
+documents by integrating AI capabilities 
+into web applications where i have used langchain, chroma and LLm models.
+
+i had worked on health care domain project to manage doctor's 
+credentials, where i have securely stored health care data including
+doctor certiticates, continue education credential, nurse licence 
+and also creating backend APIs to manage scheduling and 
+to automate reminders, ensuring that healthcare providers 
+receive timely updates on certificate expirations.
+
+I have implemeted OAuth flow to integrate third-party 
+services in our application, i have developed a serverless REST API 
+that handled over 10,000 requests daily and built 
+an authentication module using AWS Cognito and JWT. This hands-on experience 
+helped me to design backend solutions that are secure, 
+efficient, and reliable by using AWS cognito, API Gateway, S3 and Lambda.
+
+I'm led the team of 6 developers by engaging with code review and deciding high 
+level architecture
+
+I have also expereienced in docker, kubernetes and CI/CD pipeline.
+
+I'm excited about the opportunity at Sanius Health 
+because of company provides innovative and future proof predective solution by 
+integrating futursitic technology like AI. 
+My experience to work in scalable, reliable, secure and AI capable solution 
+in health care centric project closely aligns with this role.
+
+Cuurenly, My salary is 8,50,000 and i'm expecting 20,00,000. 
+My notice period is one month but it will be negotiate upto 21 days.
+
+To summarize, my experience in backend development, 
+i've expereienced to build scalable and efficient healthcare solutions, 
+aligns well with Sanius objectives. I love to work with 
+quality team to improve my self and passionate about 
+provide enhanced solution to the user and excited to adopt new technologies
+ as well. 
+Thank you for considering my application, and I'm looking forward 
+to hear form you.

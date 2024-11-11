@@ -82,6 +82,28 @@ let a = 10;
 // Unlike let and const, var declarations are function-scoped or globally-scoped if not in a function, not block-scoped.
 
 let a = 10;
+function z(){
+    var a = 20;
+    console.log(a);     // 20
+}
+z();
+console.log(a);         // 10
+
+let a = 10;
+{
+    let a = 20;
+    console.log(a);     // 20
+}
+console.log(a);         // 10
+
+var a = 10;
+{
+    let a = 20;
+    console.log(a);    // 20 
+}
+console.log(a);         // 10
+
+let a = 10;
 function x() {
     console.log(a,this.a); // undefined undefined
     var a = 20;
