@@ -6,8 +6,8 @@
 };
  
 const getValue = obj.getValue;
-console.log(getValue());
-console.log(obj.getValue()); 
+console.log(getValue());            // undefined
+console.log(obj.getValue());        // 42
 
 2.searching in postgresql (ts_vector in built fuction)
 

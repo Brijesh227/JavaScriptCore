@@ -1,4 +1,4 @@
-/*  please must see example on line 89 onwards
+/*  please must see example on line 87 onwards and line 229
     https://www.youtube.com/watch?v=fVXp7ZWjlO4&list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&index=6
 
     You can use 'this' inside Object to refer current context.
@@ -25,6 +25,23 @@
             'this' is lexically bound and refers to this from the surrounding code at the time the arrow function is defined.
 
         // Object does not create binding with this, function do.
+
+    Standard Rule to Solve This Type of Question
+        When analyzing how this behaves in JavaScript, keep these standard rules in mind:
+
+        Method Invocation: When a function is called as a method of an object 
+                            (e.g., obj.getValue()), this refers to that object (obj in this case).
+
+        Function Invocation: When a function is called as a standalone function 
+                            (e.g., getValue()), this refers to the global object in non-strict mode (or undefined in strict mode).
+
+        Arrow Functions: Note that arrow functions do not have their own this context. 
+                            Instead, they lexically bind this from the surrounding code.
+
+        Constructor Invocation: When a function is called with the new keyword, 
+                                this refers to the newly created instance.
+
+        Event Handlers: In event handler functions, this refers to the element that fired the event.
 */
 
 
@@ -206,3 +223,36 @@ function inner() {
     console.log("inner", this);
 }
 outer(inner);       // Window (inner function runs entirely in different execution context)
+
+
+// --- object binding with this ----
+const obj = {
+    value: 42,
+    getValue: function() {
+        return this.value;
+    },
+    getArrVal: () => {
+        return this.value;
+    }
+};
+ 
+const getValue = obj.getValue;
+const getArrValue = obj.getArrVal;
+console.log(getValue());                // undefined
+console.log(getArrValue());             // undefined
+console.log(obj.getValue());            // 42
+console.log(obj.getArrVal());           // undefined
+
+/**
+ * const getValue = obj.getValue;
+    Reference to Function: The variable getValue holds a reference to the function getValue defined in the obj object.
+                            At this point, it is just a reference to the function, not a reference to the object (obj).
+
+    No Closure Over the Object: In JavaScript, when you reference a method from an object like this, 
+                                you are not creating a closure that retains a reference to the object. 
+                                Instead, you're simply copying the method itself, which does not carry the context of this with it.
+
+    How this Works: In the line const getValue = obj.getValue;, the method loses its binding to the obj context. 
+                    So when you later call getValue(), it does not know about obj, and thus this does not point to obj. 
+                    Instead, this will refer to the global object in non-strict mode (or be undefined in strict mode).
+ */

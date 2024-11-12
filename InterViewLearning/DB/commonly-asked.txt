@@ -1,4 +1,0 @@
-HAVING vs Where cluase
-constraint in postgresql
-
-join in mongodb
