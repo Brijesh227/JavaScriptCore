@@ -1,5 +1,11 @@
 // Temporal Dead Zone: is the time since when this let varible was hoisted and till it is initiliaze it's value.
 
+/**
+ * Lexical scope refers to the rule that determines the accessibility of variables based 
+ * on their physical location (or structure) in the source code at the time the code is written.
+ * 
+ */
+
 /* SyntaxtError vs ReferenceError vs TypeError
     ReferenceError: when you try to access variable inside temporal dead zone it gives this error.
     TypeError: Assignment to constant variable.
