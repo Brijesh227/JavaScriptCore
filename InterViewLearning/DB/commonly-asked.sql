@@ -39,8 +39,9 @@ WHERE subject = 'Hindi'
 AND score = (SELECT MAX(score) 
              FROM marks 
              WHERE subject = 'Hindi');
+
 below is solution of mine giving all students of having obtained marks in hindi
-2X.select name, MAX(score) AS hindi_marks from marks where subject = 'Hindi' GROUP BY name ORDER BY hindi_marks DESC;
+2X(false solution).select name, MAX(score) AS hindi_marks from marks where subject = 'Hindi' GROUP BY name ORDER BY hindi_marks DESC;
 
 3.SELECT DISTINCT score 
 FROM marks 
@@ -49,4 +50,4 @@ ORDER BY score DESC
 LIMIT 1 OFFSET 2;
 
 below is solution of mine
-3X.select MAX(score) AS hindi_marks from marks where subject = 'Hindi' GROUP BY name ORDER BY hindi_marks DESC LIMIT 3 OFFSET 2;
+3X(false solution).select MAX(score) AS hindi_marks from marks where subject = 'Hindi' GROUP BY name ORDER BY hindi_marks DESC LIMIT 3 OFFSET 2;
