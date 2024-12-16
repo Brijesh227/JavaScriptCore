@@ -135,3 +135,39 @@ const readFileAsArray = function(file, cb = () => {}) {
 // })
 
 // console.log("normal")
+
+const promise = new Promise((resolve,reject) => {
+    resolve(42);
+});
+
+promise.
+   then((res) => {
+      console.log("resolved:", res);
+      throw new Error("Error2");
+   })
+   .catch((error) => {
+     console.log("rejected:", error);  
+   });
+
+// resolved: 42
+// ERROR!
+// rejected: Error: Error2
+    // at /tmp/KHJX8sjKAr/main.js:11:13
+
+function fetchData() {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("data");
+        },2000)
+    })
+}
+async function getData() {
+    const data = await fetchData();
+    console.log("Resolved: ",data);
+    
+}
+
+getData().then(() => console.log("Pending"));
+
+//  Resolved:  data
+//  Pending
