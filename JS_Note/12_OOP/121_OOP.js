@@ -8,7 +8,7 @@ OOPs in js contains:
     Classes
     Instances (new, this)
 
-4 Pillars of JS:
+4 Pillars of OOPs:
     1.Abstraction
     2.Encapsulation
     3.Inheritance
