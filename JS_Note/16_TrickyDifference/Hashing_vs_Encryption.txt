@@ -1,0 +1,43 @@
+
+
+
+Encryption:
+    -> Protect data confidentiality by transforming plaintext into ciphertext, making it unreadable without a specific decryption key.
+    -> It is a two-way function. Data can be encrypted and later decrypted using the appropriate key(s).
+    -> Use Cases: 
+        Securing data in transit (e.g., HTTPS), file encryption, email encryption, and more.
+    Algorithms:
+        1. AES (Advanced Encryption Standard):
+            - Symmetric encryption (uses the same key for encryption and decryption).
+            - Widely used for securing sensitive data.
+        
+        2. RSA (Rivest-Shamir-Adleman):
+            - Asymmetric encryption (uses a public key for encryption and a private key for decryption).
+            - Common in digital signatures and secure communications.
+
+        3. DES/Triple DES:
+            - Older symmetric encryption methods, now largely replaced by AES due to better security in AES.
+
+---
+
+Hashing:
+    -> Protect data integrity by generating a fixed-length, unique representation of data (hash) based on its content. The process is irreversible.
+    -> It is a one-way function. Data cannot be "unhashed" to retrieve the original input.
+    -> Use Cases: 
+        Password storage, verifying data integrity, digital signatures.
+    Algorithms:
+        1.SHA-256 (Secure Hash Algorithm 256-bit):
+            - Produces a fixed-length 256-bit hash.
+            - Commonly used in blockchain technology and digital certificates.
+
+        2. MD5 (Message Digest Algorithm 5):
+            - Creates a 128-bit hash. It is fast but no longer secure against modern attacks.
+            - Often used for non-critical checksums.
+
+        3. SHA-1:
+            - Produces a 160-bit hash. It has been deprecated due to vulnerabilities but was widely used in the past.
+
+Examples:
+    - Encryption: Encrypting a message like "Hello, World!" with AES might result in unreadable ciphertext such as `6vFQ8nmPdzowTqz12g==`. This ciphertext can be decrypted using the same key.
+    - Hashing: Hashing the same message "Hello, World!" with SHA-256 produces a unique hash like `a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b9cb1cb3f6298e06d`. You cannot reverse this hash to retrieve the original message.
+

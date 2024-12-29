@@ -43,7 +43,6 @@ person.greet = function() {
 
 //You can also use Object.create() with an existing object as the prototype.
 
-
 let animal = {
   type: 'Animal',
   speak: function() {
@@ -54,11 +53,11 @@ let animal = {
 let dog = Object.create(animal);
 dog.name = 'Fido';
 dog.bark = function() {
-  console.log('Woof!');
+  console.log('Woof!',name);        // undefined
+  console.log('Woof!',this.name);   // Woof! Fido
 };
 
 // 5. Using Object.assign() -> Object.assign() can be used to create a new object by copying the properties of one or more existing objects.
-
 
 let person = Object.assign({}, { name: 'John', age: 30 });
 person.greet = function() {
@@ -66,7 +65,6 @@ person.greet = function() {
 };
 
 // 6. Using the class Syntax (ES6+) -> In modern JavaScript (ES6 and later), you can create objects using classes, which is syntactic sugar over the constructor function approach.
-
 
 class Person {
   constructor(name, age) {

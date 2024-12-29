@@ -13,4 +13,15 @@ const obj = {
 
 obj['1'] = "hj";
 obj[1] = "sa";
-console.log(obj);       // { '1': 'sa', hello: 'hi' }   
+console.log(obj);       // { '1': 'sa', hello: 'hi' }
+
+const obj2 = {
+    value: 42,
+    getValue: function() {
+        return this.value;
+    }
+};
+ 
+const getValue = obj2.getValue;
+console.log(getValue());            // undefined
+console.log(obj2.getValue());       // 42

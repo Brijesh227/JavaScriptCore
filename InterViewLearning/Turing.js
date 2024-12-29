@@ -13,29 +13,11 @@ const customerRide = {
 function calculateFare() {
     const clone = JSON.parse(JSON.stringify(this));
     clone.walletBalance -= 5.5;
-    console.log(`The rider traveled on date ${clone.dateofTravel} and balance of ${clone.walletBalance} and last traveled on ${clone.lastTravelledOn}`);
+    console.log(`The rider traveled on date ${clone.dateofTravel}, previousDue ${clone.previousDues} and balance of ${clone.walletBalance} and last traveled on ${clone.lastTravelledOn}`);
 }
 
 const bindedCalculateFare = calculateFare.bind(customerRide);
-bindedCalculateFare();
-
-// which option is correct:
-// 1. there is no loss of value as the lastTravelledOn and dateofTravel are printed correctly.
-// 2. the loss of value for lastTravelledOn and dateofTravel keys can be prevented if object.assign(this) is used instead of JSON.parse(JSON.stringify(this));
-
-// option 2 is correct as 
-//    -> JSON.stringify() does not handle Date objects as regular JavaScript objects
-//    -> object is serialized using JSON.stringify(), the key-value pairs where the value is undefined 
-//        are dropped from the resulting JSON string
-
-//    -> Object.assign(this) is a shallow copy method. When you use Object.assign(), 
-//        it will copy primitive values (like strings, numbers, and undefined values) 
-//        and references (like objects, arrays, and functions) from the original object to the target object.
-//           -> e.g., For Date objects, since the Date object is copied by reference, 
-//               the date information will not be lost, and no time zone conversion or loss of data will occur.
-//           -> If the lastTravelledOn key is undefined, it will remain undefined in the cloned object, 
-//               instead of being dropped.
-
+bindedCalculateFare();  // The rider traveled on date 2023-02-01T18:30:00.000Z, previousDue null and balance of 58954.5 and last traveled on undefined
 
 /**
  * new Date("02-02-2023"), the string "02-02-2023" according to the current timezone (GMT +5:30)
@@ -44,17 +26,17 @@ bindedCalculateFare();
  *      new Date("02-02-2023") => Thu Feb 02 2023 00:00:00 GMT+0530 (India Standard Time)
  * 
  * but when,
- *      JSON.stringify(this) converts the entire customerRide object into a JSON string. 
+ *      -> JSON.stringify(this) converts the entire customerRide object into a JSON string. 
  *      The Date object (new Date("02-02-2023")) is converted into an ISO 8601 string format
  * 
  *      *****  JavaScript internally stores dates in UTC, A Date object in JSON is always converted into UTC format  *****
  * 
- *      JSON.parse() to deserialize the JSON string back into an object, 
+ *      -> JSON.parse() to deserialize the JSON string back into an object, 
  *      it will automatically convert the ISO 8601 string ("2023-02-02T00:00:00.000Z") back into a Date object (UTC time zone).
  * 
  * 
- *      new Date("2023-02-02T00:00:00.000Z")  // This is in UTC
- *          2023-02-01T18:30:00.000Z
+ *      new Date("2023-02-02T00:00:00.000Z")    // This is in UTC
+ *          2023-02-01T18:30:00.000Z            // This is in IST(local time zone)
  * 
  * 
  *  Key Points to Keep in Mind to Avoid This Issue
@@ -80,6 +62,22 @@ bindedCalculateFare();
             Convert the Date to a string in the desired format (e.g., toLocaleString() or toISOString()) 
             when logging or displaying it.
             Store and handle time zone offsets manually if precise local time handling is needed.
+
+    second question which option is correct:
+        1. there is no loss of value as the lastTravelledOn and dateofTravel are printed correctly.
+        2. the loss of value for lastTravelledOn and dateofTravel keys can be prevented if object.assign(this) is used instead of JSON.parse(JSON.stringify(this));
+        
+        option 2 is correct as 
+            -> JSON.stringify() does not handle Date objects as regular JavaScript objects
+            -> object is serialized using JSON.stringify(), the key-value pairs where the value is undefined 
+                are dropped from the resulting JSON string
+            -> Object.assign(this) is a shallow copy method. When you use Object.assign(), 
+                it will copy primitive values (like strings, numbers, and undefined values) 
+                and references (like objects, arrays, and functions) from the original object to the target object.
+                   -> e.g., For Date objects, since the Date object is copied by reference, 
+                       the date information will not be lost, and no time zone conversion or loss of data will occur.
+                   -> If the lastTravelledOn key is undefined, it will remain undefined in the cloned object, 
+                       instead of being dropped.
  */
 
 
@@ -234,7 +232,7 @@ forEach loop => 2 element
 for of loop => 2 element
 for in loop => all key(0,1,-1)
 
- */
+*/
 
 // 6. Account types => Normal, Gold, Prefered
 
@@ -250,9 +248,7 @@ class BankAccount {
 }
 
 const customer = new BankAccount({ newAccountType: "Gold" });
-console.log(customer.changeAccountType("Prefered"));
-
-// There is runtime exception it can be solved by removing static keyword from changeAccountType method
+console.log(customer.changeAccountType("Prefered")); // There is runtime exception it can be solved by removing static keyword from changeAccountType method
 
 /*
   static methods are indeed only called on the class itself, not on instances of the class.
@@ -283,25 +279,59 @@ for (let index = 0; index < bankAccount.length; index++) {
 
 bankAccount[1].balance = 200;
 
-console.log(bankAccount[1].balance);
-
-// The freeze method freezes the object but does not throw an error, rather freezeWithError should be used to ensure that an error is thrown when a frozen object is being modified.
-
-// "use strict" should be added at the top of the file to ensure that an error is thrown whenever the developer tries to reassign a value to a frozen object.
-
-// Objects which are frozen inside the array will never throw an error if modified because the freeze function does not return a new object; rather it freezes the object at the same reference.
-
-// The V8 engine used by the browser and NodeJS is different hence if the same code is executed in a browser runtime it will throw an error. It is not throwing an error right now because it is executed in NodeJS runtime.
-
-// None of the options are correct.
+console.log(bankAccount[1].balance);    // 10000
 
 /**
- * The Object.freeze() method prevents modifications to an object but does not inherently throw an error 
- * when trying to modify a frozen object unless the code is running in "strict mode".
+ * 1. The freeze method freezes the object but does not throw an error, rather freezeWithError should be used to ensure that an error is thrown when a frozen object is being modified.
+ * 2. "use strict" should be added at the top of the file to ensure that an error is thrown whenever the developer tries to reassign a value to a frozen object.
+ * 3. Objects which are frozen inside the array will never throw an error if modified because the freeze function does not return a new object; rather it freezes the object at the same reference.
+ * 4. The V8 engine used by the browser and NodeJS is different hence if the same code is executed in a browser runtime it will throw an error. It is not throwing an error right now because it is executed in NodeJS runtime.
+ * 5. None of the options are correct.
  * 
+ *  option 2 is correct
+ *  The Object.freeze() method prevents modifications to an object but does not inherently throw an error 
+ * when trying to modify a frozen object unless the code is running in "strict mode".
  */
 
-//8.
+//8. secure/optmize javascript file by hiding the actual names of variables and functions. and also making tough to reverse engineer the functions and reducing code size.
+
+/**
+ *  1. code obfuscation
+    2. code encryption
+    3. code obfuscation and minification
+    4. code obfuscation and Encryption
+    5. code minification
+ * 
+ * correct answer is 3.
+ * 
+ * 1. Code Obfuscation:
+    -> A process of transforming source code into a version that is functionally equivalent but difficult for humans to read or reverse-engineer.
+    -> Makes the code harder to understand.
+    -> Use: 
+        Protect intellectual property by making it harder for attackers to understand the logic and purpose of the code.
+    -> Tool/Library:
+        JavaScript Obfuscator (javascript-obfuscator)
+        UglifyJS (with obfuscation options)
+    
+  2. Code Encryption:
+    -> Encoding the source code so that it is only readable after being decrypted, typically using cryptographic techniques.
+    -> Use: 
+        Prevent unauthorized users from viewing or modifying the code entirely unless they have the key to decrypt it.
+    -> Tool/Library:
+        Webpack with plugins like crypto-js for runtime decryption.
+        Cipher.js (for custom encryption).
+
+  3. Code Minification
+    -> Removes unnecessary characters (e.g., whitespace, comments) and shortens variable names to reduce file size.
+    -> Use: 
+        Hides the logic and reduces the size of the JavaScript files for faster delivery.
+    -> Tool/Library:
+        Terser (minification + some obfuscation options)
+        UglifyJS (obfuscation + minification)
+        JavaScript Obfuscator (can integrate minification too)
+        Google Closure Compiler
+ */
+
 
 
 // 4. delete isSelected from bank
