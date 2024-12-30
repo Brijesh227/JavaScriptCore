@@ -1,0 +1,57 @@
+// speacial note
+
+if you have ascii then 0x(ascii) is hexadecimal and U+(ascii) is Unicode
+
+A - 65      (decimal) ASCII
+  - 0x48    (hexadecimal)
+  - U+0041  (Unicode)
+
+ASCII => 8 bit character (0 - 127) 
+        -> very limited only for english
+
+Unicode => A universal character encoding standard designed to include every character used in all writing systems, 
+            as well as symbols, emojis, and more.
+
+        -> Over 1.1 million code points(unique code for every character across languages and platforms)
+
+
+        Unicode SuperSet >>>>> ASCII subset
+
+UTF-8 => A variable-length encoding of Unicode that uses 1 to 4 bytes per character (8 - 32 bits) (U+0000 to U+10FFFF, requiring up to 4 bytes.)
+        -> why variable because backward compatiable with ASCII
+        -> space efficient don't waste extra bit for english character which can represent in 1 byte only.
+        -> for ascii only use 1 byte.(U+0000 to U+007F)
+        -> for emojis uses 4 bytes. (U+10000 to U+10FFFF)
+        -> UTF-8 is independent of processor architecture or operating system.
+        -> Any system or processor that implements UTF-8 decoding will interpret the bytes consistently.
+
+        Unicode defines code points, but it doesn’t specify how these numbers are stored or transmitted as bytes.
+        Computers operate on bytes (8 bits), not directly on Unicode code points.
+        Therefore, an encoding like UTF-8 translates Unicode code points into byte sequences.
+
+
+UTF-16 => A variable-length encoding of Unicode that uses 2 or 4 bytes per character.
+        -> Commonly used in Windows(Internal representation) and Java(String).
+
+
+    UTF-8: Efficient for text with mostly ASCII characters.
+    UTF-16: Efficient for text with characters from scripts that use more code points, such as Chinese or emojis.
+
+---------------------------------------------------------------------------------------------------------------
+
+-> Mostly all nodejs modules internally used stream
+    HTTP request-response
+    zlib
+    crypto
+    file module(fs)
+    process.stdout, process.stderr
+
+-> streams meaning process data in chunks
+
+-> Buffer is physical space in memory where readable stream sends data and writable stream fetch data
+    - Buffer in hexadecimal ( A - 65(decimal) 0x48(hexadecimal) )
+    - Streams bydefault uses UTF-8 encoding
+
+-> readablestream + Buffer + writableStream ====> streaming
+
+-> chunk is small piece of binary data of larger file

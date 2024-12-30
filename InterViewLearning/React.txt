@@ -1,10 +1,42 @@
 // Supercoder
 
-1. How to optimised react application performance
+1. How to optimised react application performance 
+    lazy loading
+    usememo and usecallback
+    cleanup event listener
+
 2. What are the some best practice for securing a app intertaed with third party service like payment integration
+    Do not store sensitive information in local storage, session storage, or cookies
+    Securely pass sensitive data to backend
+    Use Environment Variables for Sensitive Information
+    Use trusted third-party SDKs and APIs
+
 3. Compare time complexity of common operations in array and linkedlist in js (access, insert/delete at end, at begining, search) ?
+
+        Operation	           Array	    Linked List
+        Access by index	        O(1)	        O(n)
+        Insert at end	        O(1)*	        O(1)
+        Delete at end	        O(1)*	        O(n)
+        Insert at beginning	    O(n)	        O(1)
+        Delete at beginning	    O(n)	        O(1)
+        Search	                O(n)	        O(n) 
+        * amortized
+
+    Key Takeaways:
+        Arrays are efficient for access and manipulation at the end but inefficient for insertions or deletions at the beginning or middle due to the need to shift elements.
+        Linked Lists are efficient for insertions and deletions at the beginning and end (when the tail is available) but inefficient for access and search, as they require traversal.
+
+
 4. How would you implement SSO in react app to enhance  securtiy and user experience?
 5. In a scenario where you need to manage complex state transitions in react, how would you implement redux?
+
+    setup redux store
+        Create a Redux Slice
+        Combine reducers from all slices and create the store.
+
+    Provide the Store to the Application
+    Use Redux State and Dispatch Actions in Components
+
 6. How would you implement a HOC to add logging functionality to a component's lifecycle methods? 
 7. What are key consideration while designing a responsive layout for a web app using css Grid?
 8. Explain situation when react context might not be best fitted,why you choose redux?
@@ -12,7 +44,7 @@
     What is difference betwen these types of syntax?
     const { useState } = require('react');
 
-    import { useState }  from 'react';
+    import { useState } from 'react';
 10. How do you use advanced typescript concept like mapped types, conditional types and utility types to enforcing strong typescript in a react?
     provide practical example.
 
