@@ -32,7 +32,7 @@ user.pet.name = "hello";
 console.log(user.name);         // john doe
 console.log(user.pet.name);     // hello
 
-/* which is used to create object from prototype : 
+/* which is used to create object from prototype : Object.create()
     Object.create() vs Object.prototype vs Object.defineProperty()
 */
 
@@ -92,7 +92,7 @@ var x = 5;
     console.log(x);         // 10
 })();
 
-//which css propertly allows to to create responsive layout by defining flexible units based on viewport width?
+//which css propertly allows to create responsive layout by defining flexible units based on viewport width?
 
 width of div 
 div {
