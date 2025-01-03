@@ -6,9 +6,9 @@
 
 ///     UTC => UTC is a time zone, not a date format (Coordinated Universal Time)
 ///     ISO 8601 => date and time format standard      
-///     comparison always in milliseconds
+///     comparison always in milliseconds(Date.now())
 ///     toLocaleString() => more customizable
-///     A Date object in JSON is always converted into UTC format
+///     A Date object in JSON is always converted into UTC timezone (see Turing.js first question)
 
 // Best Practices:
 //  Convert the Date to a string in format(toLocaleString(),toISOString()) when logging or displaying it.
@@ -34,24 +34,45 @@
     Date -> standard way of date & time  ====> ISO 8601 format(standard format)
 
         new Date(year, month, day, hour, minute, second, millisecond)
-                month (0-11)
+                month (0-11) only in this
 
-        new Date(YYYY-MM-DDTHH:mm:ssZ)      
+        new Date("YYYY-MM-DDTHH:mm:ssZ")    // make sure wrap in string
+                                            // month start from 01-12  
 
-        new Date("MM-DD-YYYY")
+        new Date("MM-DD-YYYY")              // same as above month(01-12)  
 
         new Date(epoch)
-                epoch = milliseconds
+                epoch = milliseconds(13 digit) (10 digit * 1000)
 */
 
 console.log(new Date())     // Mon Dec 23 2024 17:30:02 GMT+0530 (India Standard Time)      Browser  (start with thu)
                             // 2024-12-26T10:01:19.992Z                                     node
 
-// adding Z(or z both fine) change the output
+// adding Z(or z both fine) change the output in browser only for node it is same across all
+// 
+// koi na bap ni takat nathi z and toISOString() sathe avi jai to
+// browser ne timezone nahi apo but toISOString() karso etle sali karse
 
-console.log(new Date("2024-01-02T12:00:00Z"))       // Tue Jan 02 2024 17:30:00 GMT+0530 (India Standard Time)
+const date10 = new Date("2024-12-23T05:20:00Z");    // Mon Dec 23 2024 10:50:00 GMT+0530 (India Standard Time)
+                                                    // 2024-12-23T05:20:00.000Z
+
+const date11 = new Date("2024-12-23T05:20:00");     // Mon Dec 23 2024 05:20:00 GMT+0530 (India Standard Time)
+                                                    // 2024-12-23T05:20:00.000Z
+                                                    
+
+console.log(date10.toISOString());                  // 2024-12-23T05:20:00.000Z
+                                                    // 2024-12-23T05:20:00.000Z
+
+console.log(date11.toISOString());                  // 2024-12-22T23:50:00.000Z
+                                                    // 2024-12-23T05:20:00.000Z
+
+
+console.log(new Date("2024-01-02T12:00:00Z"));      // Tue Jan 02 2024 17:30:00 GMT+0530 (India Standard Time)
                                                     // 2024-01-02T12:00:00.000Z (with extra bit(milisecond))
 
+console.log(new Date("2024-01-02T12:00:00"));       // Tue Jan 02 2024 12:00:00 GMT+0530 (India Standard Time)
+                                                    // 2024-01-02T12:00:00.000Z
+                                                                                                    
 console.log(new Date("2024-12-26T17:30:02"));       // Thu Dec 26 2024 17:30:02 GMT+0530 (India Standard Time)
                                                     // 2024-12-26T17:30:02.000Z
                                                     
@@ -65,7 +86,7 @@ let date9 = new Date('2024-12-24');                 // valid
 /* new Date("02-02-2023"), 
     the string "02-02-2023" according to the current timezone (GMT +5:30) 
     The date is created with the time part implicitly set to midnight (00:00:00), 
-    and the time zone offset is also factored in (IST is GMT +5:30). 
+    and in browser the time zone offset is also factored in (IST is GMT +5:30). 
 */
 
 console.log(new Date("01-02-2024"))                 // Tue Jan 02 2024 00:00:00 GMT+0530 (India Standard Time)
@@ -99,14 +120,14 @@ console.log(date.toString());       // Mon Dec 23 2024 17:30:02 GMT+0530 (India 
 console.log(date.toLocaleString())  // 23/12/2024, 16:36:34         (in browser)
                                     // 12/23/2024, 11:06:34 AM      (in node)
 
-const date2 = new Date("2024-12-23T05:40:00Z");     // 2024-12-23T05:40:00.000Z
-const date3 = new Date("2024-12-23T17:40:00Z");     // 2024-12-23T17:40:00.000Z 
+const date2 = new Date("2024-12-23T05:40:00Z");     // 2024-12-23T05:40:00.000Z  // node
+const date3 = new Date("2024-12-23T20:40:00Z");     // 2024-12-23T20:40:00.000Z  // node
 
 console.log(date2.toLocaleString())     // 23/12/2024, 11:10:00         (in browser)
                                         // 12/23/2024, 5:40:00 AM       (in node)
 
-console.log(date3.toLocaleString())     // 23/12/2024, 23:10:00         (in browser)
-                                        // 12/23/2024, 5:40:00 PM       (in node)
+console.log(date3.toLocaleString())     // 24/12/2024, 02:10:00         (in browser)(date changed) dd/mm/yyyy mm-01 to 12
+                                        // 12/23/2024, 8:40:00 PM       (in node)
 
 console.log(date2.toLocaleTimeString())     // 11:10:00
                                             // 5:40:00 AM
@@ -116,9 +137,10 @@ console.log(date2.toLocaleDateString())     // 23/12/2024
 
 // toUTCString() -> a human-readable, standard UTC timestamp in the RFC 1123 format(Day, DD Mon YYYY HH:MM:SS GMT)
 // toISOString() -> a standard ISO 8601 timestamp in UTC with format(YYYY-MM-DDTHH:mm:ss.sssZ)
+//               -> There is no conversion if Z is present  
 
 console.log(date2.toUTCString())            // Mon, 23 Dec 2024 05:40:00 GMT    (browser)
-console.log(date2.toISOString())            // 2024-12-23T05:40:00.000Z         (browser)
+console.log(date2.toISOString())            // 2024-12-23T05:40:00.000Z         (browser)(timezone not converted)
 
                                             // Mon, 23 Dec 2024 05:40:00 GMT    (node)
                                             // 2024-12-23T05:40:00.000Z         (node)
@@ -139,6 +161,7 @@ console.log(minute)
 console.log(second)         
 console.log(dayofWeek)      
 
+// get milliseconds(Date.now() is more preferable)
 
 let myTimeStamp = Date.now();
 console.log(myTimeStamp)    // 1703521837045
@@ -147,7 +170,7 @@ const newDate = new Date();
 console.log(newDate.getTime())      // work with object - 1703521837045
 
 
-// to convert local time to UTC time
+// to convert local time to UTC time zone(Coordinated Universal Time)
 
 //nodejs
 let localDate = new Date(2024, 11, 24, 18, 30, 0);
@@ -163,4 +186,13 @@ let utcDate = new Date(localDate2.toUTCString());
 // let utcDate = new Date(localDate2);              // both works (JavaScript Date objects store time in UTC internally)
 
 console.log(utcDate.toISOString());                     // 2024-12-24T13:00:00.000Z
+
+// -------- OR(simple) --------------------
+
+let localDate3 = new Date(2024, 11, 24, 18, 30, 0);
+/**
+ * new Date(2024, 11, 24, 18, 30, 0) creates a date object in the local timezone:
+    This means 2024-12-24 18:30:00 in your local timezone (e.g., UTC+5.5).
+ */
+console.log(localDate3.toISOString());                  // 2024-12-24T13:00:00.000Z
 
