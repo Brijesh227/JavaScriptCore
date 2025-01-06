@@ -10,11 +10,20 @@ function square(num){      //num = parameter
 }
 var square4 = square(4);  // 4 = arguments
 
-1. memory phase:
+1. memory phase:(compile time)
     n: undefined
     square: {...} // whole code
     square4: undefined
 
-2. code Execution:
+2. code Execution:(run time)
     when new function is called it create it's own execution context.
 
+
+JavaScript is considered an interpreted, dynamically typed language, 
+but it also employs JIT compilation for performance optimization. 
+It doesn’t require explicit compilation like C or Java. 
+
+
+Its type system is dynamic, meaning types are checked at runtime, and variables can change their type.
+
+Static typing means that the type of a variable is known at compile-time instead of at runtime(typescript)
