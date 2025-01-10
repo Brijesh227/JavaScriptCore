@@ -11,7 +11,7 @@ console.log(obj.getValue());        // 42
 
 2.searching in postgresql (ts_vector in built fuction)
 
-3. Row-level security in postgresql
+3.Row-level security in postgresql
 
 3.which data goes into sql and no sql in hospital management system (how to secure patient data?)
 

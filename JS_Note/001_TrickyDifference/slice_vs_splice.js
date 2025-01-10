@@ -5,6 +5,8 @@
  *          -> slice create shallowed copy and return that portion
  * 
  * splice: changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
+ *          -> return deleted element
+ *          -> (start, deletcount, adding element)
  *          -> change original one
  *          -> it add or remove from original array
  *          -> it behave based on arguments 
@@ -37,8 +39,11 @@ sli[1] = 9;
 console.log('sli',sli);         // [3, 9]
 console.log('arr',arr);         // [1, 2, 3, 4, 5, 6, 7]    // shallow copy but not changed because primitive value
 
-
-
+const sp2 = arr.splice(2,1,8);
+console.log('sp2',sp2);         // sp2 [ 3 ]
+sp2[0] = 9;   
+console.log('sp2',sp2);         // sp2 [ 9 ]                      
+console.log('arr',arr);         // arr [1, 2, 8, 4, 5, 6, 7]
 
 const originalArray = [{ value: 1 }, { value: 2 }];
 const shallowCopy = originalArray.slice();
@@ -47,9 +52,3 @@ shallowCopy[0].value = 10;      // Modify a property of the object in the copied
 
 console.log('shallowCopy:', shallowCopy); // Output: [{ value: 10 }, { value: 2 }]
 console.log('originalArray:', originalArray); // Output: [{ value: 10 }, { value: 2 }]
-
-const sp2 = arr.splice(2,1,8);
-console.log('sp2',sp2);         // sp2 [ 3 ]
-sp2[0] = 9;   
-console.log('sp2',sp2);         // sp2 [ 9 ]                      
-console.log('arr',arr);         // arr [1, 2, 8, 4, 5, 6, 7]

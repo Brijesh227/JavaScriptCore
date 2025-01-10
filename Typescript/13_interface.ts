@@ -63,7 +63,7 @@ interface User {
     name: string,
     mobile: number
     getCoupon(): string
-    // getCoupon: () => string
+    // getCoupon: () => string  // both valid
     googleId?: string
     getDiscount(code: string): string
 }
