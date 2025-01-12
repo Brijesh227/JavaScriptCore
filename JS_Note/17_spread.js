@@ -1,14 +1,38 @@
-const a = [{name:'a',age:20}]
-const b = [...a,{name:'b',age:30}]
-b[0].name='c'
-b[1].name='d'
-console.log(a)
-console.log(b)
+/**
+ * The rest parameter collects all arguments into an array.(double check rest not in spread)
+ * 
+ * whatever pass to ...(rest) wrap in [] as simple as that
+ * 
+ */
 
-const a = {name:'a',age:20}
-const b = [{...a},{name:'b',age:30}]
-b[0].name='c'
-b[1].name='d'
+function main1(args) {
+    console.log('here argument',args);      
+}
+
+function main2(...args) {
+    console.log('here argument',args);      
+}
+
+const ar = ['1', '2'];
+main1(ar);      // [ '1', '2' ]
+main2(ar);      // [ [ '1', '2' ] ]
+main1(1,2);     // 1
+main2(1,2)      // [ 1, 2 ]
+
+
+const a1 = [{name:'a',age:20}]
+const b1 = [...a1,{name:'b',age:30}]
+b1[0].name='c';
+b1[1].name='d';
+console.log(a1)
+console.log(b1)
+
+const a2 = {name:'a',age:20}
+const b2 = [{...a2},{name:'b',age:30}]
+b2[0].name='c';
+b2[1].name='d';
+console.log(a2)
+console.log(b2)
 
 
 const arr = [..."whatever"];
