@@ -1,6 +1,7 @@
 /**
- * When request sent first time from browser it fetches html and internally made extra 
- * call to fetch required css and js file used in that html file and favicon file.
+ * When request sent first time from browser,
+ *   -> it fetches html and internally made extra call to fetch required css and js file used in that html file
+ *   -> extra api call for favicon 
  * 
  * // File based URL
  * www.hello.com/about.html    

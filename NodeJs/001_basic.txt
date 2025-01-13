@@ -1,1 +1,8 @@
 Nodejs server: https://www.youtube.com/playlist?list=PL1BztTYDF-QPdTvgsjf8HOwO4ZVl_LhxS
+
+
+* Web-Application: send html data as a response
+    - dynamic web Application is fetch data from db generate HTML,CSS,JS and send to user(server side rendering)
+
+* Web-API: send JSON data as a 
+    - web api send json data respectred client user those data.
