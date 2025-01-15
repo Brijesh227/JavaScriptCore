@@ -5,5 +5,12 @@
  *  -> organize in mvc
  *  -> allows to write nodejs faster & simpler(minimize the number of lines of code)
  * 
+ *  // status code
  * 
+ *  200 -> OK
+ *  201 -> Created
+ *  404 -> Not Found
+ *  400 -> Bad Request
+ *  500 -> Internal Server Error
+ *  
  */
