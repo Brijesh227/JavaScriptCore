@@ -61,7 +61,6 @@ app.get('/api/v1/movies/:id/:director?',(req, res) => {         // ? means optio
 });
 
 // update a movie
-
 app.patch('/api/v1/movies/:id',(req, res) => {
     const updateMovie = req.body;
     const { id } = req.params;
@@ -87,6 +86,35 @@ app.patch('/api/v1/movies/:id',(req, res) => {
             status:  'success',
             data: {
                 movie
+            }
+        });
+    });
+});
+
+app.delete('/api/v1/movies/:id',(req, res) => {
+    const { id } = req.params;
+
+    // my solution
+    // const filterMovie = movies.filter(ele =>  ele.id !== parseInt(id));
+
+    // video solution
+    const movie = movies.find(ele => ele.id === id * 1);
+
+    if(!movie) {
+        return res.status(404).json({
+            status:  'fail',
+            message: 'Invalid ID'
+        });
+    }
+
+    const indexToDelete = movies.indexOf(movie);
+    movies.splice(indexToDelete, 1);
+
+    fs.writeFile(`${__dirname}/data/movies.json`, JSON.stringify(movies), (err) => {
+        res.status(204).json({
+            status: 'success',
+            data: {
+                movie: null
             }
         });
     });

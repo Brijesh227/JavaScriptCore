@@ -16,5 +16,4 @@ app.get('/',(req, res) => {
 
     // for json
     res.status(200).json({message: 'Hello from express server'});
-
 })
