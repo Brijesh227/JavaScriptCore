@@ -2,6 +2,7 @@
     factory vs construcor function: https://www.youtube.com/watch?v=fbuyliXlDGI&list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&index=5
     this with arrow: https://www.youtube.com/watch?v=ajTvmGxWQF8&list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&index=7
 
+    // Factory function
     For data privacy use factory function, no one can change name.
         eg.,    function createPerson(name) {
                     return {
@@ -13,8 +14,19 @@
                 const me = createPerson("ji");
                 me.name = "notji";             // not allowed because me doesn't have name property.
 
-    Use constructor function if you want to use inheritance. 
+    // Constructor function           
+     
         Constructor function === class (both has same fundamentals - prototypal Inheritance)
+        Use constructor function if you want to use inheritance.
+
+        function Person(name) {
+            this.name = name;
+            this.talk = function() {
+                console.log(`Hi, I am ${this.name}`);
+            }
+        }
+        const me = new Person("ji");
+        me.name = "notji";             // allowed because me has name property.
 
     // Annonymous function -  generally used as function expression
     funcion(){
@@ -134,7 +146,10 @@ console.log(Person.__proto_ === pme.prototype);  // true
 
 /*  
     where this refer in factory fucntion:
-        In a method defined within an object, this refers to the object that owns the method. When you create an instance of Person with new, this within the constructor function and the methods of the instance refers to the new instance being created, not the window object.
+        In a method defined within an object, this refers to the object that owns the method. 
+        When you create an instance of Person with new, 
+        this within the constructor function and the methods of the instance refers to the new instance being created, 
+        not the window object.
     
     What "new" keyword does internally when new Person("hi"):
         1.A new object is created: {}.

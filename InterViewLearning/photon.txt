@@ -1,0 +1,13 @@
+1. What steps to consider while designing restful api where read operations are more frequent than write operations?
+2. graphql vs rest which is used in which scenario?
+3. How to achieve conurrency in backend? what are the steps to reduce race condition in backend?
+4. How to improve performance of application? which tool is used for that and What are steps to find bottleneck?
+5. How to prevent backend api from sql injection, xss, csrf attacks?
+6. How to handle large data in backend?
+7. How to maintain consistent state across multiple microservice architecture?
+8. How to analyze database query and what are the steps to improve performance of database especially in case of large data?
+9. How to handle testing while deploying application on production?
+10. What are key consideration while choosing SQL vs NoSQL database?
+11. How to choose cloud service(AWS, Azure, GCP) for application and what are the steps to choose cloud service?
+12. How to autoscale application in cloud? which tools are used for that?
+13. Monitoring and logging in cloud?

@@ -122,7 +122,7 @@ function x(){
     for(var i=1;i<6;i++){
         function z(time){
             setTimeout(() => {  
-                console.log(i);
+                console.log(time);
             }, time*1000);
         }
         z(i);
@@ -155,7 +155,7 @@ function counter(){
 var cnt = counter();
 cnt();                  // we are hiding count to not increment from outside world.
 
-// Above code not a scalable approach use factory function instead
+// Above code not a scalable approach use constructor function instead
 
 function Counter(){
     var count = 0;
