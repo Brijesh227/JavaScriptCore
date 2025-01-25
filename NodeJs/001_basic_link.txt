@@ -1,5 +1,5 @@
 Nodejs server: https://www.youtube.com/playlist?list=PL1BztTYDF-QPdTvgsjf8HOwO4ZVl_LhxS
-
+Thread Working: https://www.youtube.com/watch?v=1kCgiLuyF4c&list=PLfEr2kn3s-bqrqEzlQXbrFwisqlYspmRr&index=23
 
 * Web-Application: send html data as a response
     - dynamic web Application is fetch data from db generate HTML,CSS,JS and send to user(server side rendering)
