@@ -118,23 +118,34 @@ const readFileAsArray = function(file, cb = () => {}) {
 
 
 
-// setTimeout(() => {
-//   console.log("setTimeout");
-// },0)
+setTimeout(() => {
+  console.log("setTimeout");
+},0)
 
-// process.nextTick(() => {
-//   console.log("next tick");
-// })
+process.nextTick(() => {
+  console.log("next tick");
+})
 
-// Promise.resolve("1").then((data) => {
-//   console.log("promise",data);
-// })
+Promise.resolve("1").then((data) => {
+  console.log("promise",data);
+})
 
-// setImmediate(() => {
-//   console.log("setImmediate");
-// })
+setImmediate(() => {
+  console.log("setImmediate");
+})
 
-// console.log("normal")
+console.log("normal")
+
+/**
+ * Answer:
+ * 
+ *  normal
+    next tick
+    promise 1
+    setTimeout
+    setImmediate
+ * 
+ */
 
 const promise = new Promise((resolve,reject) => {
     resolve(42);
@@ -163,8 +174,7 @@ function fetchData() {
 }
 async function getData() {
     const data = await fetchData();
-    console.log("Resolved: ",data);
-    
+    console.log("Resolved: ",data);   
 }
 
 getData().then(() => console.log("Pending"));

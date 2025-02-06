@@ -45,7 +45,7 @@ const processData = () => {
 };
 
 data = processData();
-console.log('data',data);
+console.log('data',data);       // undefined
 
 
 

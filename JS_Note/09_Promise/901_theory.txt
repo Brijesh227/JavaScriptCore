@@ -1,0 +1,10 @@
+1. When you work with multiple promise then only first is executed.
+2. Always use resolve or reject from promise else await code never executes and keep waiting.
+    await is only waiting for block of promise, do not wait in global scope.
+3. loop that work with async/await:
+    for (const p of promises) {}
+    for (let i=0;i<promises.length;i++) {}
+
+4. loops that not work with async/await:
+    forEach
+    map

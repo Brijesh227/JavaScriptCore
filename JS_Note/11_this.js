@@ -1,4 +1,4 @@
-/*  please must see example on line 87 onwards and line 229
+/*  please must see example on line 87 onwards and on line 123, 229
     https://www.youtube.com/watch?v=fVXp7ZWjlO4&list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&index=6
 
     You can use 'this' inside Object to refer current context.
@@ -96,12 +96,18 @@ const obj = {
         setTimeout(() => {
             console.log(this.name); // ji
         }, 1000);
+    },
+    arrtalk: () => {
+        setTimeout(() => {
+            console.log(this.name); // undefined
+        }, 1000);
     }
 }
 console.log(this);              // Window
 console.log(obj.hello());       // {name: "ji", hello: ƒ} (when called obj.hello(), this refer to obj)
 console.log(obj.arrHello());    // Window (Object doesn't create its own execution context)
-console.log(obj.talk());        // ji (obj scope passed to arrow fucntion inside setTimout)
+console.log(obj.talk());        // ji (obj scope passed to arrow function inside setTimout)
+console.log(obj.arrtalk());
 
 function helloji(){
     let hi2 = "hi";
