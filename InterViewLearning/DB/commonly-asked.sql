@@ -10,7 +10,9 @@
     --  ORDER BY: Sort the results based on specified columns.
 
 -- aggregate function
-    -- you can use aggregate functions with or without GROUP BY, and when GROUP BY is necessary
+    -- you can use aggregate functions with or without GROUP BY
+        -- Without GROUP BY → Aggregates apply to the entire dataset.
+        -- With GROUP BY → Aggregates apply to groups of data separately.
 -- GROUP BY
     -- you can select a column which used with GROUP BY(column), other column need to be use with aggregate function.
 
@@ -25,7 +27,7 @@
 
 1. HAVING vs Where cluase
 2. constraint in postgresql
-3. join in mongodb
+3. join in mongodb 
 
 -- question on aggregate function and GROUP BY
 id (Primary Key) 
@@ -40,7 +42,7 @@ score (20, 30, 90 …)
 // Ans
 1.select MAX(score) AS mark from marks where subject = 'Hindi'.
 -- or
-1. select score from marks where subject = 'hindi' order by score desc limit 1;
+1. select score from marks where subject = 'Hindi' order by score desc limit 1;
 
 2. SELECT name 
 FROM marks 
@@ -51,7 +53,7 @@ AND score = (SELECT MAX(score)
 
 -- or
 
-2.select name from marks where subject = 'hindi' order by score desc limit 1;
+2.select name from marks where subject = 'Hindi' order by score desc limit 1;
 
 -- below is solution of mine giving all students of having obtained marks in hindi
 2X(false solution).select name, MAX(score) AS hindi_marks from marks where subject = 'Hindi' GROUP BY name ORDER BY hindi_marks DESC;
