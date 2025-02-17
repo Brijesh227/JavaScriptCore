@@ -90,6 +90,10 @@ ANS:
         React re-renders CounterParent, causing CounterButton to re-render.
         console.log("Child rendered") confirms when the child re-renders.
 
+        useCallback() only ensures that the function reference (handleClick) stays the same across renders.
+        However, React does not automatically prevent child components from re-rendering when the parent updates.
+        By default, if a parent component re-renders, all its child components also re-render, even if their props didn't change.
+
     React.memo() prevents re-rendering by checking if props have changed.
     Since useCallback() ensures that onClick has the same reference, React.memo() detects no prop change → No re-render.
 
